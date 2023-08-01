@@ -7,6 +7,8 @@ package ddit.chap11.string;
  * StringBuilder([int capacity]) : capacity(버퍼사이즈를 의미)
  * 2. append(데이터) : 기존의 문자열 끝에 '데이터'를 추가하여 저장
  * 3. insert(int offset, String str)
+ * 4. replace(int index1, int index2, String str) : index1부터 index2-1까지 문자열을 'str'로 교체
+ * 5. toString() : String타입으로 변환
  */
 
 public class StringBuilderExample {
@@ -21,8 +23,14 @@ public class StringBuilderExample {
 
 		StringBuilder str=new StringBuilder("대한민국대전시");
 		str.insert(4, "오룡");
-		System.out.println(str);
+		System.out.println(str.toString());
+		
+		str.replace(4, 6, "계룡");
+		System.out.println(str.toString());
+		
+		str.replace(4, 9, "계룡");
+		System.out.println(str.toString());
+		
 		
 	}
-
 }
