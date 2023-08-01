@@ -18,6 +18,11 @@ public class StringBuilderExample {
 		sb.append(" where mem_regon1 like '0%' ");
 		String sql=sb.toString();
 		System.out.println(sql);
+
+		StringBuilder str=new StringBuilder("대한민국대전시");
+		str.insert(4, "오룡");
+		System.out.println(str);
+		
 	}
 
 }
