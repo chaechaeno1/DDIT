@@ -1,0 +1,16 @@
+package ddit.chap06.sec05;
+
+public class HimartExample {
+
+	public static void main(String[] args) {
+		Customer c1 = new Customer();
+		
+		c1.buy(new Audio());
+		c1.buy(new Computer());
+		
+		c1.summary();
+
+	}
+
+	
+}
