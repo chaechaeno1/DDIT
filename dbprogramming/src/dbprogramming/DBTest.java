@@ -110,6 +110,7 @@ public class DBTest {
 				pstmt.setObject(i+1, param.get(i));
 			}	// i+1은 오라클에서는 순번을 1번부터 카운트하기 때문			
 			result=pstmt.executeUpdate(); 
+			conn.commit();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {

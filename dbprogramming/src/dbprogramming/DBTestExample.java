@@ -31,6 +31,7 @@ public class DBTestExample {
 		//한번만 쓰기 때문에 객체 생성X, choice 변수로 선언
 		
 		switch(choice) {
+		
 		case 1:
 			sb.append(" SELECT PROD_ID, PROD_NAME, PROD_PRICE, ");
 			sb.append(" PROD_PROPERSTOCK ");
@@ -40,6 +41,8 @@ public class DBTestExample {
 			sql=sb.toString();
 			dt.selectList(sql);
 			break;
+			
+			
 		case 2:
 			sb.append(" SELECT PROD_ID, PROD_NAME, PROD_PRICE, ");
 			sb.append(" PROD_PROPERSTOCK ");
@@ -52,6 +55,8 @@ public class DBTestExample {
 			dt.selectOne(sql, pd);
 			System.out.println("======조회완료======");
 			break;
+			
+			
 		case 3: //신규입력(insert into~) 
 			param=new ArrayList<Object>();
 			
@@ -79,7 +84,9 @@ public class DBTestExample {
 				System.out.println("자료가 입력되지 않았습니다.");
 			}
 			break;
-		case 4:
+			
+			
+		case 4: //갱신 update 테이블명 set ~ 
 			param=new ArrayList<Object>();
 			sql="UPDATE TPROD SET ";
 			String yesOrNot="";
@@ -126,6 +133,28 @@ public class DBTestExample {
 			}
 			break;
 			
+			
+		case 5: //삭제 delete from ~ [where  ]
+			param=new ArrayList<Object>();
+			sql="DELETE FROM TPROD ";
+			
+			System.out.print("삭제할 상품번호 : ");
+			cpid=sc.nextLine();			
+			sql=sql+" WHERE PROD_ID = ? ";
+			
+			param.add(cpid);
+			flag=dt.update(sql, param);
+			
+			if(flag != 0) {
+				System.out.println("자료삭제 성공");
+			}else {
+				System.out.println("자료삭제 실패");				
+			}
+			break;	
+			
+		case 9: 
+			System.out.println("시스템을 종료합니다.");
+			System.exit(0);
 		}
 			
 	}

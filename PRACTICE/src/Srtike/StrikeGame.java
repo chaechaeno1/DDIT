@@ -22,10 +22,12 @@ public class StrikeGame {
 			}
 		}
 		System.out.printf("정답 : %d, %d, %d", r1, r2, r3);
-			
+		
+		int count=0;
 		while(true) {
 			int strike = 0;
 			int ball = 0;
+			System.out.println();
 			System.out.print("숫자1 : ");
 			int n1 = sc.nextInt();
 			System.out.print("숫자2 : ");
@@ -52,6 +54,7 @@ public class StrikeGame {
 			break;
 		}else if(strike==0 && ball==0) {
 			System.out.println("아웃!");
+			count++;
 		}else {
 			System.out.println(strike+"S "+ball+"B");
 		}
