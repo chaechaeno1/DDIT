@@ -144,18 +144,19 @@ public class JDBCUtil {
 			
 			try {
 				conn = DriverManager.getConnection(url, user, password);
-				ps = conn.prepareStatement(sql);
+				ps = conn.prepareStatement(sql); //동적쿼리
 				for(int i = 0; i < param.size(); i++) {
-					ps.setObject(i + 1, param.get(i));
+					ps.setObject(i + 1, param.get(i)); //오라클은 1부터 시작하므로 i+1
 				}
 				rs = ps.executeQuery();
+				// rs에는 mem_id, mem_pass, mem_name, mem_hp, mem_mileage
 				ResultSetMetaData rsmd = rs.getMetaData();
-				int columnCount = rsmd.getColumnCount();
+				int columnCount = rsmd.getColumnCount(); //컬럼의 갯수 
 				
 				while(rs.next()) {
 					row = new HashMap<>();
-					for(int i = 1; i <= columnCount; i++) {
-						String key = rsmd.getColumnLabel(i);
+					for(int i = 1; i <= columnCount; i++) { ///오라클은 1부터 시작
+						String key = rsmd.getColumnLabel(i); //컬럼명 추출
 						Object value = rs.getObject(i);
 						row.put(key,value);
 					}
