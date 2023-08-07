@@ -82,20 +82,22 @@ public class JDBCUtil {
 		// sql => "SELECT * FROM JAVA_BOARD WHERE BOARD_NUM > 10"
 		List<Map<String, Object>> result = null;
 		try {
-			conn = DriverManager.getConnection(url, user, password);
-			ps = conn.prepareStatement(sql);
-			rs = ps.executeQuery();
-			ResultSetMetaData rsmd = rs.getMetaData();
-			int columnCount = rsmd.getColumnCount();
-			while(rs.next()) {
-				if(result == null) result = new ArrayList<>();
-				Map<String, Object> row = new HashMap<>();
-				for(int i = 1; i <= columnCount; i++) {
-					String key = rsmd.getColumnLabel(i);
-					Object value = rs.getObject(i);
-					row.put(key, value);
+				conn = DriverManager.getConnection(url, user, password);
+				ps = conn.prepareStatement(sql);
+				rs = ps.executeQuery();
+				if(rs!=null) {
+				ResultSetMetaData rsmd = rs.getMetaData();
+				int columnCount = rsmd.getColumnCount();
+				while(rs.next()) {
+					if(result == null) result = new ArrayList<>();
+					Map<String, Object> row = new HashMap<>();
+					for(int i = 1; i <= columnCount; i++) {
+						String key = rsmd.getColumnLabel(i);
+						Object value = rs.getObject(i);
+						row.put(key, value);
+					}
+					result.add(row);
 				}
-				result.add(row);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -226,7 +228,37 @@ public class JDBCUtil {
 		}
 		
 		return row;
-		//
+		
+	}
+	
+	
+	public Object selectValue(String sql){
+		// sql => "SELECT * FROM JAVA_BOARD 
+		//			WHERE BOARD_NUMBER=(SELECT MAX(BOARD_NUMBER) FROM JAVA_BOARD)"
+		// sql => "SELECT * FROM MEMBER MEM_ID='a001' AND MEM_PASS='123'"
+		Object result = null;
+		
+		try {
+			conn = DriverManager.getConnection(url, user, password);
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getObject(0);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(rs != null) try {  rs.close();  } catch (Exception e) { }
+			if(ps != null) try {  ps.close();  } catch (Exception e) { }
+			if(conn != null) try { conn.close(); } catch (Exception e) { }
+		}
+		
+		return result;
+	
+	
+	
+	
 	}
 }
 

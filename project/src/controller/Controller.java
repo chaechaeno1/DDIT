@@ -27,11 +27,11 @@ public class Controller { // 사용자의 메인 메뉴
 	}
 	
 	private void start() {
-//		sessionStorage.put("login", false);	// false: 로그인 안됨
-//		sessionStorage.put("loginInfo", null);
+		sessionStorage.put("login", false);	// false: 로그인 안됨
+		sessionStorage.put("loginInfo", null);
 		int view = View.HOME;
 		while(true) { //무한루프
-			switch (view) {
+			switch (view) {//view는 상수
 			case View.HOME: //대문자 View는 interface
 				view = home(); //home()에 반환값 존재
 				break;
@@ -45,7 +45,7 @@ public class Controller { // 사용자의 메인 메뉴
 				view = boardService.list(); 
 				break;
 //			case View.BOARD_DETAIL: view = boardService.detail(); break;
-//			case View.BOARD_INSERT: view = boardService.insert(); break;
+			case View.BOARD_INSERT: view = boardService.insert(); break;
 //			case View.BOARD_UPDATE: view = boardService.update(); break;
 //			case View.BOARD_DELETE: view = boardService.delete(); break;
 			
@@ -85,6 +85,8 @@ public class Controller { // 사용자의 메인 메뉴
 			return View.MEMBER_LOGIN; //22
 		case 2: 
 			return View.MEMBER_SIGNUP; //21
+		case 3: 
+			return View.BOARD_LIST; //31
 		case 4: 
 			return View.FREE_LIST;
 		case 5: 
