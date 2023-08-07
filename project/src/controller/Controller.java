@@ -2,7 +2,6 @@ package controller;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import service.BoardService;
 import service.FreeBoardService;
 import service.LoginService;
@@ -81,7 +80,7 @@ public class Controller { // 사용자의 메인 메뉴
 		System.out.println("   1.로그인 2.회원가입 3.게시판 5.테스트게시판");
 		System.out.println("=========================");
 		System.out.print("번호 입력 >> ");
-		switch (ScanUtil.nextInt()) {
+		switch (ScanUtil.nextInt()) {//static으로 선언되었기 때문에 클래스명으로 호출 가능
 		case 1: 
 			return View.MEMBER_LOGIN; //22
 		case 2: 

@@ -113,11 +113,22 @@ public class JDBCUtil {
 		int result = 0;
 		try {
 			conn = DriverManager.getConnection(url, user, password);
-			ps = conn.prepareStatement(sql);
-			for(int i = 0; i < param.size(); i++) {
-				ps.setObject(i + 1, param.get(i));
+			ps = conn.prepareStatement(sql); //동적쿼리
+			// 1. DB 커넥션 객체 생성 2. 명령어 객체 생성(statement 객체 생성) 3. 실행
+			for(int i = 0; i < param.size(); i++) { //ArrayList의 갯수 세기-> size()
+				ps.setObject(i + 1, param.get(i)); 
+				//set+타입
+				//i+1 -> 물음표(?)의 순번, param.get(i) -> param의 i번째 정보 꺼내서 i번째 ?에 대응
+				//param에 저장되어있는 타입이 Object
+				//i+1은 Object의 문법 지배를 받음.(오라클은 1번째부터, 자바는 0번째부터)
+				//
 			}
 			result = ps.executeUpdate();
+			//select -> executeQuery
+			//insert, update, delete -> executeUpdate => commit 필수
+			//영향 받은 행의 수 출력
+			if(result>0) 
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -215,6 +226,7 @@ public class JDBCUtil {
 		}
 		
 		return row;
+		//
 	}
 }
 

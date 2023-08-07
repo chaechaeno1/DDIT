@@ -18,6 +18,8 @@ public class MemberService {
 	}
 	
 	MemberDAO dao = MemberDAO.getInstance();
+	//getInstance() -> 싱글톤패턴 사용
+	//new 연산자가 쓰이지 않고 객체 생성
 	
 	public int login() {
 		if((boolean) Controller.sessionStorage.get("login")) {
@@ -43,14 +45,21 @@ public class MemberService {
 		System.out.println("-- 회원가입 --");
 		System.out.print("아이디 >> ");
 		String id = ScanUtil.nextLine();
+		//
 		System.out.print("비밀번호 >> ");
 		String pass = ScanUtil.nextLine();
+		//
 		
 		List<Object> param = new ArrayList<>();
+		//id, pass 입력값 받은 후 List에 저장, list는 순서 중요
+		//param은 List 객체
+		//0번째 - id 값, 1번째 - pw 값
 		param.add(id);
 		param.add(pass);
 		
 		int result = dao.signUp(param);
+		//dao는 멤버변수, 메서드 밖에서 선언
+		//	MemberDAO dao = MemberDAO.getInstance();
 		return View.HOME;
 	}
 }

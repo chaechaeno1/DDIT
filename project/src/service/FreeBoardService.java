@@ -62,3 +62,4 @@ public class FreeBoardService {
 		return result; 
 	}
 }
+
