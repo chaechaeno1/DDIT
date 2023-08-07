@@ -59,7 +59,7 @@ public class BoardService {//싱글톤 패턴
 		String dt=format.format(now);
 		System.out.println("게시글 등록");
 		//게시글번호 생성
-		Map<String, Object> result = dao.createBoardNumber(dt);
+		Object result = dao.createBoardNumber(dt);
 		System.out.print("글번호: ");
 		return 1;
 		
