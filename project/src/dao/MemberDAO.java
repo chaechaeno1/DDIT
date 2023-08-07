@@ -21,7 +21,7 @@ public class MemberDAO {
    }
    
    public int signUp(List<Object> param) {
-      return jdbc.update( "INSERT INTO TMEMBER ( MEM_ID, MEM_PASS ) VALUES (?, ?)", param);
+      return jdbc.update( "INSERT INTO TMEMBER ( MEM_ID, MEM_NAME, MEM_PASS ) VALUES (?, ?, ?)", param);
    } //update라는 메소드가 여러 dao들을 한꺼번에 총괄 
    	 //오라클의 영향을 받음, 컬럼명 띄어서 인쇄하기
    	 //  

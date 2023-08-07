@@ -127,7 +127,7 @@ public class JDBCUtil {
 			//select -> executeQuery
 			//insert, update, delete -> executeUpdate => commit 필수
 			//영향 받은 행의 수 출력
-			if(result>0) 
+			if(result>0) conn.commit();
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -136,7 +136,7 @@ public class JDBCUtil {
 			if(ps != null) try {  ps.close();  } catch (Exception e) { }
 			if(conn != null) try { conn.close(); } catch (Exception e) { }
 		}
-		return result;
+		return result;//dao로 반환
 	}
 	public int update(String sql) {
 		// sql => "DELETE FROM JAVA_BOARD"

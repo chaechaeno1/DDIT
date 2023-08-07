@@ -43,23 +43,33 @@ public class MemberService {
 	}
 	public int signUp() {
 		System.out.println("-- 회원가입 --");
+		//
 		System.out.print("아이디 >> ");
 		String id = ScanUtil.nextLine();
 		//
 		System.out.print("비밀번호 >> ");
 		String pass = ScanUtil.nextLine();
 		//
+		System.out.print("이름 >> ");
+		String name = ScanUtil.nextLine();
+		//
 		
 		List<Object> param = new ArrayList<>();
 		//id, pass 입력값 받은 후 List에 저장, list는 순서 중요
 		//param은 List 객체
-		//0번째 - id 값, 1번째 - pw 값
+		//0번째 - id 값, 1번째 - 이름 값, 2번째 - pw 값
 		param.add(id);
+		param.add(name);
 		param.add(pass);
 		
 		int result = dao.signUp(param);
 		//dao는 멤버변수, 메서드 밖에서 선언
 		//	MemberDAO dao = MemberDAO.getInstance();
+		if(result>0) {
+			System.out.println("회원가입이 완료되었습니다.");
+		}else {
+			System.out.println("회원가입 실패...");
+		}
 		return View.HOME;
 	}
 }

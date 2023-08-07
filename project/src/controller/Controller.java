@@ -27,8 +27,8 @@ public class Controller { // 사용자의 메인 메뉴
 	}
 	
 	private void start() {
-		sessionStorage.put("login", false);	// false: 로그인 안됨
-		sessionStorage.put("loginInfo", null);
+//		sessionStorage.put("login", false);	// false: 로그인 안됨
+//		sessionStorage.put("loginInfo", null);
 		int view = View.HOME;
 		while(true) { //무한루프
 			switch (view) {
@@ -73,8 +73,8 @@ public class Controller { // 사용자의 메인 메뉴
 	}
 
 	private int home() {
-  		System.out.println(sessionStorage.get("login"));
-		System.out.println(sessionStorage.get("loginInfo"));
+//  	System.out.println(sessionStorage.get("login"));
+//		System.out.println(sessionStorage.get("loginInfo"));
 		
 		System.out.println("==== 대덕인재 개발원 ====");
 		System.out.println("   1.로그인 2.회원가입 3.게시판 5.테스트게시판");
