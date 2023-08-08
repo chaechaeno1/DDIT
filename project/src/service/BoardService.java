@@ -24,13 +24,13 @@ public class BoardService {//싱글톤 패턴
 	public int list() {
 		System.out.println("-- 게시판 목록 --");
 		System.out.println("번호\t\t제목\t작성자\t작성일"); //\t는 탭키 누른것만큼 띄어줌
-		System.out.println("---------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		List<Map<String, Object>> list = dao.list();
 		//반환타입이 여러개인 것
 		
 		if(list==null) {
 			System.out.println("게시글이 없습니다.");
-			System.out.println("---------------------------------------");
+			System.out.println("---------------------------------------------------------------");
 			System.out.println("2.등록 0.종료");
 		}else {
 			for(Map<String, Object> item : list) {
@@ -41,7 +41,7 @@ public class BoardService {//싱글톤 패턴
 				System.out.println();
 			}
 		
-			System.out.println("---------------------------------------");
+			System.out.println("---------------------------------------------------------------");
 			System.out.println("1.상세 2.등록 3.수정 4.삭제 0.종료");
 	
 		}	
