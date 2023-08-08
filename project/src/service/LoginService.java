@@ -34,9 +34,10 @@ public class LoginService {
 
 		if(result != null && result.get("MEM_ID").equals(id)){
 			Controller.sessionStorage.put("login", true); //초기에 false를 true로 변경
-			Controller.sessionStorage.put("loginInfo", result);
+			Controller.sessionStorage.put("loginInfo", result.get("MEM_ID"));
+			//sessionStorage -> login, loginInfo 정보 저장
 			System.out.println(result.get("MEM_NAME") + "님! 로그인 되었습니다");
-			pageNo = View.TEST_LIST; 
+			pageNo = View.HOME; 
 		}else{
 			System.out.println("다시 로그인해주세요!");
 			pageNo = View.HOME;

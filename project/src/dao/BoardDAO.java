@@ -21,14 +21,25 @@ public class BoardDAO {//싱글톤패턴
 		//JDBCUTIL에서 public List<Map<String, Object>> selectList(String sql)을 호출함
 	}
 	
-	public Object createBoardNumber(String dt){
-		String sql = "SELECT FN_CREATE_BOARD_NUMBER(dt) FROM BOARD";
-		sql = sql+" SUBSTR(BOARD_NUMBER, 1, 8) = dt";
+	public String createBoardNumber(String dt){
+		String sql="SELECT fn_create_board_number('"+dt+"') FROM DUAL";
 		
-		System.out.println(sql);
 		return jdbc.selectValue(sql);
 	}
+	
+	public int insert(List<Object> param) {
+		String sql="INSERT INTO BOARD(BOARD_NUMBER, TITLE, CONTENT, MEM_ID, DATETIME) ";
+	    sql=sql+" VALUES(?, ?, ?, ?, ?) "; 
+	    
+	    return jdbc.update(sql, param);
+	    //public int update(String sql, List<Object> param) { 실행
+	}
 }
+
+
+
+
+
 
 
 

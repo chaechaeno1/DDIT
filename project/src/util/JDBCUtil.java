@@ -108,6 +108,8 @@ public class JDBCUtil {
 		}
 		return result;
 	}
+	
+	
 	public int update(String sql, List<Object> param) {
 		// sql => "DELETE FROM JAVA_BOARD WHERE BOARD_NUMBER=?"
 		// sql => "UPDATE JAVA_BOARD SET TITLE='하하' WHERE BOARD_NUMBER=?"
@@ -176,7 +178,6 @@ public class JDBCUtil {
 			rs = ps.executeQuery();
 			ResultSetMetaData rsmd = rs.getMetaData();
 			int columnCount = rsmd.getColumnCount();
-			
 			while(rs.next()) {
 				row = new HashMap<>();
 				for(int i = 1; i <= columnCount; i++) {
@@ -228,15 +229,14 @@ public class JDBCUtil {
 		}
 		
 		return row;
-		
 	}
 	
 	
-	public Object selectValue(String sql){
+	public String selectValue(String sql){
 		// sql => "SELECT * FROM JAVA_BOARD 
 		//			WHERE BOARD_NUMBER=(SELECT MAX(BOARD_NUMBER) FROM JAVA_BOARD)"
 		// sql => "SELECT * FROM MEMBER MEM_ID='a001' AND MEM_PASS='123'"
-		Object result = null;
+		String  result = null;
 		
 		try {
 			conn = DriverManager.getConnection(url, user, password);
@@ -244,8 +244,11 @@ public class JDBCUtil {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				result = rs.getObject(0);
+				result = (String)rs.getObject(1); //게시글번호가 getObject로 변환하여 출력			
 			}
+			
+
+			System.out.println(result);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -255,16 +258,5 @@ public class JDBCUtil {
 		}
 		
 		return result;
-	
-	
-	
-	
-	}
+	}	
 }
-
-
-
-
-
-
-
