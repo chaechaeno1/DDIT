@@ -29,6 +29,9 @@ public class Controller { // 사용자의 메인 메뉴
 	private void start() {
 		sessionStorage.put("login", false);	// false: 로그인 안됨
 		sessionStorage.put("loginInfo", null);
+		sessionStorage.put("RT_BUS", "대전-서울");
+		String str = (String) sessionStorage.get("RT_BUS");
+		System.out.println(str);
 		int view = View.HOME;
 		while(true) { //무한루프
 			switch (view) {//view는 상수
