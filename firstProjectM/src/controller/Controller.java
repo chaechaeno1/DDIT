@@ -12,7 +12,7 @@ import service.TestBoardService;
 public class Controller {
 
 	public class Controller { // 사용자의 메인 메뉴
-		// 세션
+		// 세션0
 		public static Map<String, Object> sessionStorage = new HashMap<>();
 		
 
