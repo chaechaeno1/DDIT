@@ -15,15 +15,8 @@ public class Controller {
 		// 세션
 		public static Map<String, Object> sessionStorage = new HashMap<>();
 		
-		// 서비스 객체 선언
-		MemberService memberService = MemberService.getInstance();
-		LoginService loginService = LoginService.getInstance();
-		BoardService boardService = BoardService.getInstance();
-		FreeBoardService freeboardService = FreeBoardService.getInstance();
-		TestBoardService testBoardService = TestBoardService.getInstance();
-		
-		public static void main(String[] args) {
-			new Controller().start();
+
+
 	
 	
 		}
