@@ -63,7 +63,7 @@ public class AdminService {
 		}
 		
 		
-		public int insert() {}
+
 		
 		
 	
@@ -71,7 +71,7 @@ public class AdminService {
 
 		
 		
-		sessionStorage.put("RT_BUS", "대전-서울");
-		String str = (String) sessionStorage.get("RT_BUS");
-		sessionStorage.remove("RT_BUS");
-		System.out.println(str);
+//		sessionStorage.put("RT_BUS", "대전-서울");
+//		String str = (String) sessionStorage.get("RT_BUS");
+//		sessionStorage.remove("RT_BUS");
+//		System.out.println(str);
